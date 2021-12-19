@@ -22,7 +22,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
 
 
@@ -85,6 +84,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         app:spanCount="2"
+
                         android:adapter="@{adapter}"
                         android:layout_gravity="center"
                         android:scrollbars="none"
@@ -111,6 +111,7 @@
         </LinearLayout>
 
         <ProgressBar
+            android:visibility="gone"
             android:id="@+id/progressBar"
             style="@android:style/Widget.ProgressBar.Small.Inverse"
             android:layout_width="50dp"
@@ -118,6 +119,6 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:indeterminateDrawable="@drawable/progressbar"
-            android:visibility="gone" />
+           />
     </FrameLayout>
 </layout>

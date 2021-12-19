@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MovieAssignemnt">
         <activity
             android:label="Movie Details"
-            android:name=".ui.moviediscription.MovieDetails"
+            android:name=".ui.moviediscription.MovieDetailsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.MainActivity"

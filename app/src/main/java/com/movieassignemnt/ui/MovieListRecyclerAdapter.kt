@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.movieassignemnt.R
 import com.movieassignemnt.databinding.MovieRowBinding
 import com.movieassignemnt.datasource.model.Movie
-import com.movieassignemnt.ui.moviediscription.MovieDetails
+import com.movieassignemnt.ui.moviediscription.MovieDetailsActivity
 import com.squareup.picasso.Picasso
 
 
@@ -25,6 +25,10 @@ class MovieListRecyclerAdapter(val movieList: MutableList<Movie?>?, var activity
             parent,
             false
         )
+
+
+
+
         return ViewHolder(binding)
     }
 
@@ -44,15 +48,9 @@ class MovieListRecyclerAdapter(val movieList: MutableList<Movie?>?, var activity
             view.movie = movie
 
 
-
-            Picasso.with(itemView.context)
-                .load(movie.Poster)
-                .into(view.imageMovie)
-
-
             view.imageMovie.setOnClickListener {
 
-                var intent=Intent(itemView.context,MovieDetails::class.java)
+                var intent=Intent(itemView.context,MovieDetailsActivity::class.java)
                 intent.putExtra("movie",movie)
                 itemView.context.startActivity(intent)
             }

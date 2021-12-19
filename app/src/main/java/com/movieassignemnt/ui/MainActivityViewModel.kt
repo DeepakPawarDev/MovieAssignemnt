@@ -7,8 +7,10 @@ import com.movieassignemnt.datasource.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,7 +30,17 @@ class MainActivityViewModel @Inject constructor(val movieRepository: MovieReposi
         searchMovieMutableState.value=NetworkState.ProgressIn(true)
         viewModelScope.launch {
 
-            movieRepository.getMovieListBySearch(intPage, strMovie).collect {
+            movieRepository.getMovieListBySearch(intPage, strMovie).
+            catch {
+
+                var errorMSG:String=it.localizedMessage
+                if (it is IOException){
+                  errorMSG= "Please check internet connection"
+                }
+                searchMovieMutableState.value = NetworkState.Error(errorMSG)
+                searchMovieMutableState.value=NetworkState.ProgressIn(false)
+
+            }.collect {
 
                 searchMovieMutableState.value=NetworkState.ProgressIn(false)
 
@@ -46,6 +58,7 @@ class MainActivityViewModel @Inject constructor(val movieRepository: MovieReposi
         }
 
     }
+
 
 
     sealed class NetworkState {

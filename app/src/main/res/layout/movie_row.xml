@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,7 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="8dp">
-
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardMaxElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,6 +30,7 @@
             android:orientation="vertical">
 
             <ImageView
+                app:posterImage="@{movie.component5()}"
                 android:id="@+id/image_movie"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -31,6 +41,8 @@
 
 
         </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </com.google.android.material.card.MaterialCardView>
 </layout>
